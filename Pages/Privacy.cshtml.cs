@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Bloomkergs.Pages;
+// namespace Bloomkergs.Pages;
 
 public class PrivacyModel : PageModel
 {
