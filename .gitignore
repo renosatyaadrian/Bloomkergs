@@ -1,0 +1,36 @@
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+
+# Package directories
+packages/
+node_modules/
+
+# Visual Studio Code directories
+.vscode/
+
+# Local development databases
+*.mdf
+*.ldf
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+*.gz
+*.cache
+
+# Publish directory
+publish/
