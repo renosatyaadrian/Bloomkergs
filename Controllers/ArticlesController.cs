@@ -7,11 +7,10 @@ namespace Bloomkergs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArticlesController : Controller // Ensure it inherits from Controller
+    public class ArticlesController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
 
-        // Constructor to inject ApplicationDbContext
         public ArticlesController(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -22,19 +21,7 @@ namespace Bloomkergs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            // var result = await _dbContext.Articles.ToListAsync();
-            var results = new List<Article>()
-            {
-                new Article
-                {
-                    AuthorId = new Guid(),
-                    Content = "asfnklkasnf",
-                    PublishedDate = new DateTime(),
-                    Id = new Guid(),
-                    CreatedDate = new DateTime(),
-                    Title = "welknalkwn"
-                }
-            };
+            var results = await _dbContext.Articles.ToListAsync();
             return View(results);
         }
     }
