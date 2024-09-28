@@ -3,18 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bloomkergs.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ArticlesController : Controller
+    [Route("[controller]")]
+    public class AuthorsController : Controller
     {
+        private readonly ILogger<AuthorsController> _logger;
         private readonly ApplicationDbContext _dbContext;
 
-        public ArticlesController(ApplicationDbContext dbContext)
+        public AuthorsController(ILogger<AuthorsController> logger,
+                                 ApplicationDbContext dbContext)
         {
+            _logger = logger;
             _dbContext = dbContext;
         }
 
-        // GET: api/Articles
+        // GET: api/Authors
         [HttpGet]
         public async Task<IActionResult> Index()
         {
