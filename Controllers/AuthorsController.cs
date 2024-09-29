@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bloomkergs.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class AuthorsController : Controller
     {
         private readonly ILogger<AuthorsController> _logger;
