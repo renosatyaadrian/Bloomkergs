@@ -22,7 +22,7 @@ namespace Bloomkergs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var results = await _dbContext.Articles.ToListAsync();
+            var results = await _dbContext.Authors.ToListAsync();
             return View(results);
         }
     }
