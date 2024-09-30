@@ -18,30 +18,30 @@ namespace Bloomkergs.Controllers
 
         // GET: api/Articles
         // [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            var results = new List<Article>()
-            {
-                new Article
-                {
-                    Title = "test1",
-                    Content = "asd",
-                    PublishedDate = new DateTime(2024,2,2)
-                },
-                new Article
-                {
-                    Title = "test2",
-                    Content = "asd",
-                    PublishedDate = new DateTime(2024,2,2)
-                },
-                new Article
-                {
-                    Title = "test3",
-                    Content = "asd",
-                    PublishedDate = new DateTime(2024,2,2)
-                },
-            };
-            // await _dbContext.Articles.ToListAsync();
+            // var results = new List<Article>()
+            // {
+            //     new Article
+            //     {
+            //         Title = "test1",
+            //         Content = "asd",
+            //         PublishedDate = new DateTime(2024,2,2)
+            //     },
+            //     new Article
+            //     {
+            //         Title = "test2",
+            //         Content = "asd",
+            //         PublishedDate = new DateTime(2024,2,2)
+            //     },
+            //     new Article
+            //     {
+            //         Title = "test3",
+            //         Content = "asd",
+            //         PublishedDate = new DateTime(2024,2,2)
+            //     },
+            // };
+            var results = await _dbContext.Articles.ToListAsync();
             var realResult = new ArticleViewModel()
             {
                 Articles = results
