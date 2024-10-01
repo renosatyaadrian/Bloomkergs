@@ -1,23 +1,35 @@
 using Bloomkergs.Data;
 using Bloomkergs.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 // namespace Bloomkergs.Pages;
 
 public class IndexModel : PageModel
+{
+    private readonly HttpClient _httpClient;
+
+    public List<Article> Articles { get; set; }
+
+    public IndexModel(HttpClient httpClient)
     {
-        private readonly ApplicationDbContext _dbContext;
+        _httpClient = httpClient;
+    }
 
-        public IndexModel(ApplicationDbContext dbContext)
+    public async Task OnGetAsync()
+    {
+        // Panggil API untuk mendapatkan data artikel
+        var response = await _httpClient.GetAsync("https://localhost:5001/api/Articles");
+        
+        // Jika respons sukses, deserialisasi JSON ke dalam objek List<Article>
+        if (response.IsSuccessStatusCode)
         {
-            _dbContext = dbContext;
+            var articlesJson = await response.Content.ReadAsStringAsync();
+            Articles = JsonConvert.DeserializeObject<List<Article>>(articlesJson);
         }
-
-        public List<Article> Articles { get; set; } = new List<Article>();
-
-        public void OnGet(List<Article> articles)
+        else
         {
-            Articles = [.. _dbContext.Articles];
+            Articles = new List<Article>(); // Inisialisasi dengan list kosong jika gagal
         }
     }
+}

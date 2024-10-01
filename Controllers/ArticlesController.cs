@@ -1,53 +1,24 @@
 using Bloomkergs.Data;
-using Bloomkergs.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Bloomkergs.Controllers
 {
-    // [Route("api/[controller]")]
-    // [ApiController]
-    public class ArticlesController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ArticlesController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public ArticlesController(ApplicationDbContext dbContext)
+        public ArticlesController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
-        // GET: api/Articles
-        // [HttpGet]
-        public async Task<IActionResult> IndexAsync()
+        [HttpGet]
+        public IActionResult GetArticles()
         {
-            // var results = new List<Article>()
-            // {
-            //     new Article
-            //     {
-            //         Title = "test1",
-            //         Content = "asd",
-            //         PublishedDate = new DateTime(2024,2,2)
-            //     },
-            //     new Article
-            //     {
-            //         Title = "test2",
-            //         Content = "asd",
-            //         PublishedDate = new DateTime(2024,2,2)
-            //     },
-            //     new Article
-            //     {
-            //         Title = "test3",
-            //         Content = "asd",
-            //         PublishedDate = new DateTime(2024,2,2)
-            //     },
-            // };
-            var results = await _dbContext.Articles.ToListAsync();
-            var realResult = new ArticleViewModel()
-            {
-                Articles = results
-            };
-
-            return RedirectToPage("/Index", new { realResult });;
+            var articles = _context.Articles.ToList();
+            return Ok(articles); // Mengirim data artikel dalam format JSON
         }
     }
 }
