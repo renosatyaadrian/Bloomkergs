@@ -5,6 +5,7 @@ namespace Bloomkergs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    // [ApiExplorerSettings(GroupName = "v1")] // Optional: Specify group name
     public class ArticlesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

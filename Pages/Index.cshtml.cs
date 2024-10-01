@@ -19,7 +19,7 @@ public class IndexModel : PageModel
     public async Task OnGetAsync()
     {
         // Panggil API untuk mendapatkan data artikel
-        var response = await _httpClient.GetAsync("https://localhost:5001/api/Articles");
+        var response = await _httpClient.GetAsync("http://localhost:5000/api/Articles");
         
         // Jika respons sukses, deserialisasi JSON ke dalam objek List<Article>
         if (response.IsSuccessStatusCode)
