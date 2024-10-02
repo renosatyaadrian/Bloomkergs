@@ -5,7 +5,6 @@ namespace Bloomkergs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // [ApiExplorerSettings(GroupName = "v1")] // Optional: Specify group name
     public class ArticlesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -19,7 +18,7 @@ namespace Bloomkergs.Controllers
         public IActionResult GetArticles()
         {
             var articles = _context.Articles.ToList();
-            return Ok(articles); // Mengirim data artikel dalam format JSON
+            return Ok(articles); 
         }
     }
 }
