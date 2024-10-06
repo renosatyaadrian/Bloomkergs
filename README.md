@@ -1,2 +1,2 @@
 # Bloomkergs
-ASP.NET 8 Razor Simple News Website
+ASP.NET 8 Simple News Website using Razor and REST API
