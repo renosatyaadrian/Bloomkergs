@@ -1,4 +1,3 @@
-// using Client.;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
