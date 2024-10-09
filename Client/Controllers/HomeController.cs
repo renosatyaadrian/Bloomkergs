@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Client.Models;
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -13,13 +12,11 @@ namespace Client
 {
     public class HomeController : Controller
     {
-	    // private readonly ITokenService _tokenService;
 		private readonly HttpClient _httpClient = new HttpClient();
 
 	    public HomeController()
 	    {
-		    // _tokenService = tokenService;
-	    }
+	   }
 
         public async Task<IActionResult> Index()
         {
